@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Jadugarni ✨</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #392052 0%, #171225 45%, #090812 100%);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    width: min(92%, 700px);
+    margin: auto;
+    text-align: center;
+    padding: 55px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.glow {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    background: #d879ff;
+    filter: blur(100px);
+    opacity: .15;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.g1 { top: 5%; left: -100px; }
+.g2 { bottom: 5%; right: -100px; background: #ff8bbd; }
+
+h1 {
+    font-size: clamp(2.4rem, 10vw, 5rem);
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #fff, #ffb8e1, #dcb6ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: #cfc6dc;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.card {
+    margin-top: 35px;
+    padding: 30px 22px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 50px rgba(0,0,0,.25);
+}
+
+.message {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #eee8f2;
+}
+
+button {
+    border: none;
+    margin-top: 22px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff91c8, #b98cff);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 8px 25px rgba(200,120,255,.25);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+.hidden {
+    display: none;
+}
+
+#reply {
+    margin-top: 20px;
+    color: #ffd0e8;
+    min-height: 28px;
+    line-height: 1.6;
+}
+
+.small {
+    font-size: .85rem;
+    color: #a9a0b6;
+    margin-top: 12px;
+}
+
+.gifts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.gift {
+    padding: 25px 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: .25s;
+    font-size: 2rem;
+}
+
+.gift:hover {
+    transform: translateY(-5px) rotate(-2deg);
+    background: rgba(255,255,255,.1);
+}
+
+#giftText {
+    margin-top: 20px;
+    color: #ffd8ec;
+    line-height: 1.7;
+}
+
+footer {
+    margin-top: 45px;
+    color: #82798c;
+    font-size: .8rem;
+}
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: floatUp linear forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* final popup */
+.popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.popup.show {
+    display: flex;
+}
+
+.popup-box {
+    max-width: 500px;
+    padding: 35px 25px;
+    border-radius: 28px;
+    background: #1c1729;
+    border: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    animation: pop .35s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup-box h2 {
+    color: #ffb8db;
+    margin-bottom: 15px;
+}
+
+.popup-box p {
+    color: #ddd3e3;
+    line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<div class="container">
+
+    <h1>Hey, Jadugarni ✨</h1>
+
+    <p class="subtitle">
+        I know today wasn't exactly your best day...
+        so I made you a tiny corner of the internet.
+    </p>
+
+    <div class="card">
+
+        <p class="message">
+            First of all, breathe. 🫂<br><br>
+
+            You don't have to magically become happy just because
+            someone tells you to cheer up.<br><br>
+
+            If today sucked, then yeah... today sucked.
+            Tomorrow gets another chance. ❤️
+        </p>
+
+        <button onclick="showMessage()">
+            Press this. Trust me.
+        </button>
+
+        <p id="reply"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🪄 Pick a little surprise</h2>
+
+        <p class="small">
+            No cheating. You have to click them yourself. 😭
+        </p>
+
+        <div class="gifts">
+
+            <div class="gift" onclick="gift(1)">🎁</div>
+            <div class="gift" onclick="gift(2)">💌</div>
+            <div class="gift" onclick="gift(3)">🧸</div>
+
+        </div>
+
+        <p id="giftText"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🎯 Emergency Boredom Button</h2>
+
+        <p class="small">
+            Side effects may include unnecessary smiling.
+        </p>
+
+        <button onclick="randomThing()">
+            Cure my boredom 😭
+        </button>
+
+        <p id="randomText"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>❤️ One serious thing</h2>
+
+        <p class="message">
+            You don't always have to be okay around me.<br><br>
+
+            You can be tired.
+            You can be annoyed.
+            You can have a horrible day.<br><br>
+
+            I'll still be here.
+            No fixing required.
+        </p>
+
+        <button onclick="openFinal()">
+            One last thing...
+        </button>
+
+    </div>
+
+    <footer>
+        Made with questionable coding skills & a lot of care. 🫶
+    </footer>
+
+</div>
+
+
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <h2>For my Jadugarni 🪄❤️</h2>
+
+        <p>
+            I can't magically delete whatever made today bad,
+            unfortunately. 😭
+            <br><br>
+
+            But I can remind you that one bad day doesn't
+            get to decide how beautiful your whole week is.
+            <br><br>
+
+            So for tonight, forget being productive,
+            forget pretending you're fine,
+            and just take it easy.
+            <br><br>
+
+            And if you still feel bored...
+            well, you know who to bother. :)
+        </p>
+
+        <button onclick="closeFinal()">Okay okay 😭❤️</button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const messages = [
+    "See? You pressed it. I knew curiosity would win. 😭❤️",
+    "Official reminder: you're allowed to have a bad day.",
+    "Okay, now smile a little. Just a tiny one. I won't tell anyone. 👀",
+    "If this website made you smile even 1%, my job here is done. 🫶"
+];
+
+let messageIndex = 0;
+
+function showMessage() {
+    document.getElementById("reply").textContent =
+        messages[messageIndex];
+
+    messageIndex =
+        (messageIndex + 1) % messages.length;
+
+    makeHearts();
+}
+
+
+const gifts = {
+    1: "🎁 Surprise: You are officially entitled to unlimited nonsense conversations whenever you're bored.",
+    2: "💌 Dear Jadugarni, please stop being so cute. It's becoming a little inconvenient for everyone involved. 😭",
+    3: "🧸 Emergency virtual hug. Hold for approximately 5 seconds. No refunds."
+};
+
+function gift(number) {
+    document.getElementById("giftText").textContent = gifts[number];
+    makeHearts();
+}
+
+
+const randomThings = [
+    "Quick question: if you could teleport anywhere right now, where are we going? 👀",
+    "Important debate: momos or pizza? Choose wisely.",
+    "I challenge you to smile for absolutely no reason for 3 seconds.",
+    "Imagine I just walked into the room and said 'chal ice cream khane.' 😭",
+    "Congratulations. You are no longer allowed to be bored for the next 30 seconds.",
+    "Your mission: send me the most random thought currently living in your brain."
+];
+
+function randomThing() {
+    const random =
+        randomThings[Math.floor(Math.random() * randomThings.length)];
+
+    document.getElementById("randomText").textContent = random;
+    makeHearts();
+}
+
+
+function openFinal() {
+    document.getElementById("popup").classList.add("show");
+
+    for(let i = 0; i < 15; i++) {
+        setTimeout(makeHearts, i * 80);
+    }
+}
+
+function closeFinal() {
+    document.getElementById("popup").classList.remove("show");
+}
+
+
+function makeHearts() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const symbols = ["❤️","💗","💖","✨","🌸"];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}
+
+
+/* little background magic */
+setInterval(() => {
+    if(Math.random() > .45) makeHearts();
+}, 1300);
+
+</script>
+
+</body>
+</html>
